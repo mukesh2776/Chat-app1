@@ -1,0 +1,131 @@
+.chat-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background: #1d1f27;
+  color: white;
+  padding: 1rem;
+}
+
+.chat-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.chat-body {
+  flex: 1;
+  display: flex;
+  margin-top: 1rem;
+  overflow: hidden;
+}
+
+.users-list {
+  width: 200px;
+  background: #2a2c36;
+  padding: 1rem;
+  border-radius: 8px;
+  margin-right: 1rem;
+}
+
+.users-list h5 {
+  margin-bottom: 0.5rem;
+}
+
+.messages-area {
+  flex: 1;
+  background: #2a2c36;
+  padding: 1rem;
+  border-radius: 8px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.message-bubble {
+  max-width: 60%;
+  padding: 0.5rem 1rem;
+  margin: 0.3rem 0;
+  border-radius: 12px;
+}
+
+.my-message {
+  align-self: flex-end;
+  background: #007bff;
+  color: white;
+}
+
+.other-message {
+  align-self: flex-start;
+  background: #444;
+  color: white;
+}
+
+.chat-input {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+  position: relative;
+}
+
+.chat-input input {
+  width: 40%; /* slightly wider for better typing comfort */
+  border-radius: 20px;
+  border: none;
+  padding: 0.5rem 1rem;
+  background: #333;
+  color: white;
+}
+
+.chat-input input::placeholder {
+  color: #aaa;
+}
+
+/* Style for both send and emoji buttons for visual balance */
+.chat-input button {
+  padding: 0.45rem 0.8rem;
+  border-radius: 20px;
+  background: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.chat-input button:hover {
+  background: #0056b3;
+}
+
+/* Special style for emoji button to look softer */
+.chat-input .emoji-btn {
+  background: #444;
+  color: #fff;
+  font-size: 1.2rem;
+}
+
+.chat-input .emoji-btn:hover {
+  background: #555;
+}
+
+/* Position emoji picker nicely above input */
+.chat-input .EmojiPickerReact {
+  position: absolute;
+  bottom: 3rem;  /* adjust as needed to sit above the input */
+  right: 2rem;   /* adjust to align with emoji button */
+  z-index: 1000;
+}
+
+/* Make sure emoji picker has nice shadow & rounded corners */
+.chat-input .EmojiPickerReact {
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+.sender-name {
+  font-size: 0.7rem;
+  color: #aaa;
+  margin-bottom: 0.2rem;
+  display: block;
+}
