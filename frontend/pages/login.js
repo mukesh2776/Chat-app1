@@ -10,7 +10,7 @@ export default function Login() {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const res =await axios.post("http://localhost:5000/api/login", { email, password });
+      const res =await axios.post("https://chat-app1-backend.onrender.com/api/login", { email, password });
       localStorage.setItem('token', res.data.token);
       localStorage.setItem('username', res.data.user.username);
       router.push('/chat');
