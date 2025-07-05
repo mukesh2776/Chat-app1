@@ -4,10 +4,24 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const app = express();
 const http = require('http').Server(app);
+
+
+const allowedOrigins = [
+  'http://localhost:3000',
+  'https://chat-app1-owdn.onrender.com'
+];
+
+
+app.use(cors({
+  origin: allowedOrigins,
+  credentials: true
+}));
+
 const io = require('socket.io')(http, {
   cors: {
-    origin: 'http://localhost:3000', // frontend port
-    methods: ['GET', 'POST']
+    origin: allowedOrigins,
+    methods: ['GET', 'POST'],
+    credentials: true
   }
 });
 
@@ -15,11 +29,10 @@ const authRoutes = require('./routes/auth');
 const Message = require('./models/message');
 
 // Middlewares
-app.use(cors());
 app.use(express.json());
 app.use('/api', authRoutes);
 
-// Connect to MongoDB
+
 mongoose.connect(process.env.MONGO_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
@@ -27,7 +40,7 @@ mongoose.connect(process.env.MONGO_URI, {
 .then(() => console.log('✅ MongoDB connected'))
 .catch((err) => console.error('❌ MongoDB connection error:', err));
 
-// Sample route
+
 app.get('/', (req, res) => {
   res.send('API is running');
 });
@@ -77,7 +90,7 @@ io.on('connection', async (socket) => {
   });
 });
 
-// REST endpoint for deleting via HTTP (optional, since you have socket delete)
+
 app.delete('/api/messages', async (req, res) => {
   try {
     await Message.deleteMany({});
