@@ -14,7 +14,7 @@ export default function Register() {
     try {
       console.log('Registering:', username, email, password);
 
-      await axios.post("http://localhost:5000/api/register", { username, email, password });
+      await axios.post("https://chat-app1-backend.onrender.com/api/register", { username, email, password });
       router.push('/login');
     } catch (err) {
       alert(err.response?.data?.message || 'Registration failed');
