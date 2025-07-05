@@ -14,7 +14,7 @@ export default function Chat() {
     const storedUsername = localStorage.getItem('username') || 'Guest';
     setUsername(storedUsername);
 
-   const newSocket = io('http://localhost:5000'); 
+   const newSocket = io('https://chat-app1-backend.onrender.com'); 
     setSocket(newSocket);
 
     newSocket.emit('user connected', storedUsername); // add this to notify backend who connected
